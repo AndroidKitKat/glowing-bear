@@ -984,13 +984,14 @@ weechat.directive("inputBar", function () {
                         $rootScope.showQuickKeys = true;
                     }
 
+                    var inputTypes = ["input", "select", "button", "textarea"];
                     // we should be the LAST handler, just to let other handlers handle first
                     if ($event.type === "keydown") {
                         if (
                             String.fromCharCode(code).match(/(\w|\s)/g) &&
-                            document.activeElement !== inputNode
+                            document.activeElement !== inputNode &&
+                            document.activeElement.tagName !== "INPUT"
                         ) {
-                            console.log("user is typing, jumping");
                             inputNode.focus();
                             return true;
                         }
