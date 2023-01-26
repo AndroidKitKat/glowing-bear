@@ -990,7 +990,8 @@ weechat.directive("inputBar", function () {
                         if (
                             String.fromCharCode(code).match(/(\w|\s)/g) &&
                             document.activeElement !== inputNode &&
-                            document.activeElement.tagName !== "INPUT"
+                            document.activeElement.tagName !== "INPUT" &&
+                            !$event.ctrlKey && !$event.shitKey && code !== 18
                         ) {
                             inputNode.focus();
                             return true;
